@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Web Sites</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: rgba(16, 24, 48, 0.9);
+        --text: #e8eefc;
+        --muted: #a7b4d6;
+        --link: #7dd3fc;
+        --border: rgba(125, 211, 252, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(59, 130, 246, 0.22), transparent 35%),
+          linear-gradient(180deg, #050816, var(--bg));
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(760px, 100%);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      a {
+        display: block;
+        padding: 14px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--link);
+        border: 1px solid var(--border);
+        background: rgba(10, 15, 30, 0.55);
+      }
+
+      a:hover {
+        background: rgba(20, 30, 56, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>My Web Sites</h1>
+      <p>A single place for my sites, projects, and profiles.</p>
+      <ul>
+        <li><a href="https://sinxneo.freeforums.net/" target="_blank" rel="noreferrer">sinxneo.freeforums.net</a></li>
+        <li><a href="https://pythontrainer.org/" target="_blank" rel="noreferrer">pythontrainer.org</a></li>
+        <li><a href="https://github.com/sinXne0" target="_blank" rel="noreferrer">github.com/sinXne0</a></li>
+        <li><a href="https://5chan.uk/" target="_blank" rel="noreferrer">5chan.uk</a></li>
+        <li><a href="https://darkbrowser.uk/" target="_blank" rel="noreferrer">darkbrowser.uk</a></li>
+        <li><a href="https://sinxne0.github.io/" target="_blank" rel="noreferrer">sinxne0.github.io</a></li>
+        <li><a href="https://darksec.nekoweb.org/index.html" target="_blank" rel="noreferrer">darksec.nekoweb.org</a></li>
+        <li><a href="https://darkseclabs.com/" target="_blank" rel="noreferrer">darkseclabs.com</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
