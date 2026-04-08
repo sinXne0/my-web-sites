@@ -1,5 +1,7 @@
 # My Web Sites
 
+<img width="1536" height="1024" alt="Darksec_LabZ pixel art design" src="https://github.com/user-attachments/assets/5431e867-3cf5-49a1-948b-0ee36e3eca05" />
+
 Collection of my websites and profiles.
 
 ## Links
