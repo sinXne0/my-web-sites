@@ -3,90 +3,310 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Web Sites</title>
+    <title>sinXne0 | Web Sites</title>
     <style>
       :root {
-        --bg: #0b1020;
-        --panel: rgba(16, 24, 48, 0.9);
-        --text: #e8eefc;
-        --muted: #a7b4d6;
-        --link: #7dd3fc;
-        --border: rgba(125, 211, 252, 0.22);
+        --bg: #07111f;
+        --bg-2: #10243f;
+        --panel: rgba(7, 16, 31, 0.82);
+        --panel-strong: rgba(9, 20, 38, 0.95);
+        --text: #f5f7fb;
+        --muted: #9cb0c9;
+        --line: rgba(150, 207, 255, 0.18);
+        --glow: rgba(97, 218, 251, 0.28);
+        --accent: #61dafb;
+        --accent-2: #8bffb0;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background:
-          radial-gradient(circle at top, rgba(59, 130, 246, 0.22), transparent 35%),
-          linear-gradient(180deg, #050816, var(--bg));
+        font-family: Georgia, "Times New Roman", serif;
         color: var(--text);
-        display: grid;
-        place-items: center;
-        padding: 24px;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(97, 218, 251, 0.14), transparent 30%),
+          radial-gradient(circle at 85% 15%, rgba(139, 255, 176, 0.12), transparent 24%),
+          radial-gradient(circle at 50% 100%, rgba(66, 153, 225, 0.18), transparent 28%),
+          linear-gradient(135deg, var(--bg), var(--bg-2) 52%, #040912);
       }
 
-      main {
-        width: min(760px, 100%);
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 18px;
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 32px auto;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
         padding: 32px;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(135deg, rgba(97, 218, 251, 0.08), transparent 42%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+      }
+
+      .eyebrow,
+      .meta-label {
+        margin: 0 0 12px;
+        font-family: "Courier New", monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
 
       h1 {
-        margin: 0 0 10px;
-        font-size: clamp(2rem, 4vw, 3rem);
+        margin: 0;
+        max-width: 10ch;
+        font-size: clamp(3rem, 10vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
       }
 
-      p {
-        margin: 0 0 24px;
+      .lead {
+        margin: 18px 0 0;
+        max-width: 34rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
         color: var(--muted);
       }
 
-      ul {
-        list-style: none;
-        padding: 0;
+      .meta {
+        align-self: end;
+        padding: 22px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .meta p {
         margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .grid {
         display: grid;
-        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      a {
+      .card {
+        position: relative;
         display: block;
-        padding: 14px 16px;
-        border-radius: 12px;
+        min-height: 180px;
+        padding: 24px;
+        color: inherit;
         text-decoration: none;
-        color: var(--link);
-        border: 1px solid var(--border);
-        background: rgba(10, 15, 30, 0.55);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+          var(--panel-strong);
+        overflow: hidden;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
       }
 
-      a:hover {
-        background: rgba(20, 30, 56, 0.8);
+      .card:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: auto -20% -40% auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(circle, var(--glow), transparent 65%);
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(139, 255, 176, 0.38);
+        background:
+          linear-gradient(180deg, rgba(97, 218, 251, 0.08), transparent),
+          rgba(9, 20, 38, 0.98);
+      }
+
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      .card-type {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 5px 9px;
+        border: 1px solid var(--line);
+        font-family: "Courier New", monospace;
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-2);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.65rem;
+        line-height: 1.1;
+      }
+
+      .card p {
+        margin: 0 0 22px;
+        max-width: 28ch;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .url {
+        font-family: "Courier New", monospace;
+        font-size: 0.88rem;
+        color: var(--accent);
+        word-break: break-word;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 24px;
+        font-family: "Courier New", monospace;
+        font-size: 0.84rem;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          border-right: 0;
+        }
+
+        h1 {
+          max-width: none;
+        }
+
+        footer {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>My Web Sites</h1>
-      <p>A single place for my sites, projects, and profiles.</p>
-      <ul>
-        <li><a href="https://sinxneo.freeforums.net/" target="_blank" rel="noreferrer">sinxneo.freeforums.net</a></li>
-        <li><a href="https://pythontrainer.org/" target="_blank" rel="noreferrer">pythontrainer.org</a></li>
-        <li><a href="https://github.com/sinXne0" target="_blank" rel="noreferrer">github.com/sinXne0</a></li>
-        <li><a href="https://5chan.uk/" target="_blank" rel="noreferrer">5chan.uk</a></li>
-        <li><a href="https://darkbrowser.uk/" target="_blank" rel="noreferrer">darkbrowser.uk</a></li>
-        <li><a href="https://sinxne0.github.io/" target="_blank" rel="noreferrer">sinxne0.github.io</a></li>
-        <li><a href="https://darksec.nekoweb.org/index.html" target="_blank" rel="noreferrer">darksec.nekoweb.org</a></li>
-        <li><a href="https://darkseclabs.com/" target="_blank" rel="noreferrer">darkseclabs.com</a></li>
-      </ul>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">sinXne0 network</p>
+          <h1>Sites, labs, and projects.</h1>
+          <p class="lead">
+            A single launch point for the pages, communities, experiments, and public profiles tied to the
+            sinXne0 name.
+          </p>
+        </div>
+        <aside class="meta">
+          <p class="meta-label">Index</p>
+          <p>
+            Eight destinations collected in one place. Open any card to jump straight to the live site or
+            profile.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+        <a class="card" href="https://sinxneo.freeforums.net/" target="_blank" rel="noreferrer">
+          <span class="card-type">Forum</span>
+          <h2>FreeForums</h2>
+          <p>Community space for discussion, posts, and forum-based updates.</p>
+          <span class="url">sinxneo.freeforums.net</span>
+        </a>
+
+        <a class="card" href="https://pythontrainer.org/" target="_blank" rel="noreferrer">
+          <span class="card-type">Learning</span>
+          <h2>Python Trainer</h2>
+          <p>Training-focused site centered on Python practice and educational tools.</p>
+          <span class="url">pythontrainer.org</span>
+        </a>
+
+        <a class="card" href="https://github.com/sinXne0" target="_blank" rel="noreferrer">
+          <span class="card-type">Code</span>
+          <h2>GitHub</h2>
+          <p>Open repositories, experiments, version history, and public development work.</p>
+          <span class="url">github.com/sinXne0</span>
+        </a>
+
+        <a class="card" href="https://5chan.uk/" target="_blank" rel="noreferrer">
+          <span class="card-type">Board</span>
+          <h2>5chan</h2>
+          <p>Independent web destination with its own identity and community-oriented presence.</p>
+          <span class="url">5chan.uk</span>
+        </a>
+
+        <a class="card" href="https://darkbrowser.uk/" target="_blank" rel="noreferrer">
+          <span class="card-type">Project</span>
+          <h2>DarkBrowser</h2>
+          <p>Project site for DarkBrowser with a stronger product-style presentation.</p>
+          <span class="url">darkbrowser.uk</span>
+        </a>
+
+        <a class="card" href="https://sinxne0.github.io/" target="_blank" rel="noreferrer">
+          <span class="card-type">Pages</span>
+          <h2>GitHub Pages</h2>
+          <p>Published static content hosted through GitHub Pages under the sinxne0 name.</p>
+          <span class="url">sinxne0.github.io</span>
+        </a>
+
+        <a class="card" href="https://darksec.nekoweb.org/index.html" target="_blank" rel="noreferrer">
+          <span class="card-type">Archive</span>
+          <h2>DarkSec NekoWeb</h2>
+          <p>Standalone hosted page on NekoWeb for DarkSec-related content and experiments.</p>
+          <span class="url">darksec.nekoweb.org</span>
+        </a>
+
+        <a class="card" href="https://darkseclabs.com/" target="_blank" rel="noreferrer">
+          <span class="card-type">Labs</span>
+          <h2>DarkSec Labs</h2>
+          <p>Main lab-style destination for projects, branding, and public-facing DarkSec work.</p>
+          <span class="url">darkseclabs.com</span>
+        </a>
+      </section>
+
+      <footer>
+        <span>my-web-sites</span>
+        <span>built as a clean public index for linked destinations</span>
+      </footer>
     </main>
   </body>
 </html>
